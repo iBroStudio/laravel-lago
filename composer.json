@@ -1,24 +1,32 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ibrostudio/laravel-lago",
+    "description": "Lago SDK for Laravel",
     "keywords": [
-        ":vendor_name",
+        "iBroStudio",
         "laravel",
-        ":package_slug"
+        "laravel-lago",
+        "Lago"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ibrostudio/laravel-lago",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "iBroStudio",
+            "email": "hello@ibro.studio",
             "role": "Developer"
         }
     ],
+    "version": "1.0.0",
+    "type": "custom-library",
     "require": {
-        "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "php": "^8.2",
+        "illuminate/contracts": "^10.0",
+        "michael-rubel/laravel-value-objects": "^6.0",
+        "saloonphp/laravel-http-sender": "^2.0",
+        "saloonphp/laravel-plugin": "^3.0",
+        "saloonphp/saloon": "^3.0",
+        "spatie/laravel-data": "^3.11",
+        "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -30,24 +38,23 @@
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "spatie/laravel-ray": "^1.26"
+        "phpstan/phpstan-phpunit": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "IBroStudio\\Lago\\": "src/",
+            "IBroStudio\\Lago\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "IBroStudio\\Lago\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-laravel-lago --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
@@ -73,11 +80,14 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "IBroStudio\\Lago\\LagoServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Lago": "IBroStudio\\Lago\\Facades\\Lago"
             }
+        },
+        "custom-directory-installer": {
+            "directory": "packages"
         }
     },
     "minimum-stability": "dev",

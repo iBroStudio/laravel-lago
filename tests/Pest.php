@@ -1,5 +1,9 @@
 <?php
 
-use VendorName\Skeleton\Tests\TestCase;
+use IBroStudio\Lago\Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Saloon\Config;
 
-uses(TestCase::class)->in(__DIR__);
+Config::preventStrayRequests();
+
+uses(TestCase::class, RefreshDatabase::class)->in(__DIR__);
