@@ -5,7 +5,6 @@ namespace IBroStudio\Lago;
 use IBroStudio\Lago\Sdk\LagoSdk;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IBroStudio\Lago\Commands\LagoCommand;
 
 class LagoServiceProvider extends PackageServiceProvider
 {
@@ -21,14 +20,13 @@ class LagoServiceProvider extends PackageServiceProvider
             ->hasConfigFile();
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/saloon.php',
+            __DIR__.'/../config/saloon.php',
             'saloon'
         );
 
         $this->app->singleton(
             abstract: LagoSdk::class,
-            concrete: fn() =>
-            new LagoSdk(
+            concrete: fn () => new LagoSdk(
                 url: config('lago.api.url'),
                 key: config('lago.api.key'),
             )

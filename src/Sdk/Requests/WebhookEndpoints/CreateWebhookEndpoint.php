@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\WebhookEndpoints;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -15,18 +14,16 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class CreateWebhookEndpoint extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/webhook_endpoints';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/webhook_endpoints";
-	}
-
-
-	public function __construct()
-	{
-	}
+    public function __construct()
+    {
+    }
 }

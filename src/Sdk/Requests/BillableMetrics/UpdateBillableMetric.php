@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\BillableMetrics;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -14,20 +13,18 @@ use Saloon\Http\Request;
  */
 class UpdateBillableMetric extends Request
 {
-	protected Method $method = Method::PUT;
+    protected Method $method = Method::PUT;
 
+    public function resolveEndpoint(): string
+    {
+        return "/billable_metrics/{$this->code}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/billable_metrics/{$this->code}";
-	}
-
-
-	/**
-	 * @param string $code Code of the existing billable metric.
-	 */
-	public function __construct(
-		protected string $code,
-	) {
-	}
+    /**
+     * @param  string  $code  Code of the existing billable metric.
+     */
+    public function __construct(
+        protected string $code,
+    ) {
+    }
 }

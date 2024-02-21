@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Customers;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -13,20 +12,18 @@ use Saloon\Http\Request;
  */
 class FindCustomer extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/customers/{$this->externalId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/customers/{$this->externalId}";
-	}
-
-
-	/**
-	 * @param string $externalId External ID of the existing customer
-	 */
-	public function __construct(
-		protected string $externalId,
-	) {
-	}
+    /**
+     * @param  string  $externalId  External ID of the existing customer
+     */
+    public function __construct(
+        protected string $externalId,
+    ) {
+    }
 }

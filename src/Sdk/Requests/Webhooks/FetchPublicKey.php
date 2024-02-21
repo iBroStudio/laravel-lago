@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Webhooks;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -13,16 +12,14 @@ use Saloon\Http\Request;
  */
 class FetchPublicKey extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return '/webhooks/public_key';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/webhooks/public_key";
-	}
-
-
-	public function __construct()
-	{
-	}
+    public function __construct()
+    {
+    }
 }

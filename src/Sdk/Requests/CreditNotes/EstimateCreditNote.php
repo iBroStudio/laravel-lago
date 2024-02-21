@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\CreditNotes;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -15,18 +14,16 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class EstimateCreditNote extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/credit_notes/estimate';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/credit_notes/estimate";
-	}
-
-
-	public function __construct()
-	{
-	}
+    public function __construct()
+    {
+    }
 }

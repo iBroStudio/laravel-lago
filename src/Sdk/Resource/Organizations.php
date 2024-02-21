@@ -8,8 +8,8 @@ use Saloon\Contracts\Response;
 
 class Organizations extends Resource
 {
-	public function updateOrganization(): Response
-	{
-		return $this->connector->send(new UpdateOrganization());
-	}
+    public function updateOrganization(): Response
+    {
+        return $this->connector->send(new UpdateOrganization());
+    }
 }

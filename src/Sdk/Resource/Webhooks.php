@@ -8,8 +8,8 @@ use Saloon\Contracts\Response;
 
 class Webhooks extends Resource
 {
-	public function fetchPublicKey(): Response
-	{
-		return $this->connector->send(new FetchPublicKey());
-	}
+    public function fetchPublicKey(): Response
+    {
+        return $this->connector->send(new FetchPublicKey());
+    }
 }

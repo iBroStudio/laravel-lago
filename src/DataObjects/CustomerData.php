@@ -76,11 +76,12 @@ class CustomerData extends Data implements CustomerDataContract
             'tax_identification_number' => Optional::create(),
             'timezone' => config('lago.default.timezone') ?? Optional::create(),
             'url' => Optional::create(),
-            'zipcode' => Optional::create()
+            'zipcode' => Optional::create(),
         ]);
 
         return new static(...$default->merge($source));
     }
+
     public static function fromEloquent(CustomerObjectDataEloquentSource $source): CustomerDataContract
     {
         return self::fromSource([
@@ -89,5 +90,4 @@ class CustomerData extends Data implements CustomerDataContract
             'email' => $source->getEmail(),
         ]);
     }
-
 }

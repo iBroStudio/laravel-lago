@@ -11,29 +11,26 @@ use Saloon\Contracts\Response;
 
 class Events extends Resource
 {
-	public function createEvent(): Response
-	{
-		return $this->connector->send(new CreateEvent());
-	}
+    public function createEvent(): Response
+    {
+        return $this->connector->send(new CreateEvent());
+    }
 
+    public function createBatchEvents(): Response
+    {
+        return $this->connector->send(new CreateBatchEvents());
+    }
 
-	public function createBatchEvents(): Response
-	{
-		return $this->connector->send(new CreateBatchEvents());
-	}
+    public function eventEstimateFees(): Response
+    {
+        return $this->connector->send(new EventEstimateFees());
+    }
 
-
-	public function eventEstimateFees(): Response
-	{
-		return $this->connector->send(new EventEstimateFees());
-	}
-
-
-	/**
-	 * @param string $transactionId This field represents the unique identifier sent for this specific event.
-	 */
-	public function findEvent(string $transactionId): Response
-	{
-		return $this->connector->send(new FindEvent($transactionId));
-	}
+    /**
+     * @param  string  $transactionId  This field represents the unique identifier sent for this specific event.
+     */
+    public function findEvent(string $transactionId): Response
+    {
+        return $this->connector->send(new FindEvent($transactionId));
+    }
 }

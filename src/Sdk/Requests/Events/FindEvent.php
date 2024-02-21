@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Events;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -14,20 +13,18 @@ use Saloon\Http\Request;
  */
 class FindEvent extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/events/{$this->transactionId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/events/{$this->transactionId}";
-	}
-
-
-	/**
-	 * @param string $transactionId This field represents the unique identifier sent for this specific event.
-	 */
-	public function __construct(
-		protected string $transactionId,
-	) {
-	}
+    /**
+     * @param  string  $transactionId  This field represents the unique identifier sent for this specific event.
+     */
+    public function __construct(
+        protected string $transactionId,
+    ) {
+    }
 }

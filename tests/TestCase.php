@@ -2,9 +2,9 @@
 
 namespace IBroStudio\Lago\Tests;
 
+use IBroStudio\Lago\LagoServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use IBroStudio\Lago\LagoServiceProvider;
 use Spatie\LaravelData\LaravelDataServiceProvider;
 
 class TestCase extends Orchestra

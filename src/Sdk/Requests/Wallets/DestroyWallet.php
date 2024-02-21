@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Wallets;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -13,20 +12,18 @@ use Saloon\Http\Request;
  */
 class DestroyWallet extends Request
 {
-	protected Method $method = Method::DELETE;
+    protected Method $method = Method::DELETE;
 
+    public function resolveEndpoint(): string
+    {
+        return "/wallets/{$this->lagoId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/wallets/{$this->lagoId}";
-	}
-
-
-	/**
-	 * @param string $lagoId Unique identifier assigned to the wallet within the Lago application. This ID is exclusively created by Lago and serves as a unique identifier for the wallet’s record within the Lago system.
-	 */
-	public function __construct(
-		protected string $lagoId,
-	) {
-	}
+    /**
+     * @param  string  $lagoId  Unique identifier assigned to the wallet within the Lago application. This ID is exclusively created by Lago and serves as a unique identifier for the wallet’s record within the Lago system.
+     */
+    public function __construct(
+        protected string $lagoId,
+    ) {
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Analytics;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -15,28 +14,25 @@ use Saloon\Http\Request;
  */
 class FindAllInvoiceCollections extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return '/analytics/invoice_collection';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/analytics/invoice_collection";
-	}
+    /**
+     * @param  null|mixed  $currency  The currency of revenue analytics. Format must be ISO 4217.
+     * @param  null|int  $months  Show data only for given number of months.
+     */
+    public function __construct(
+        protected mixed $currency = null,
+        protected ?int $months = null,
+    ) {
+    }
 
-
-	/**
-	 * @param null|mixed $currency The currency of revenue analytics. Format must be ISO 4217.
-	 * @param null|int $months Show data only for given number of months.
-	 */
-	public function __construct(
-		protected mixed $currency = null,
-		protected ?int $months = null,
-	) {
-	}
-
-
-	public function defaultQuery(): array
-	{
-		return array_filter(['currency' => $this->currency, 'months' => $this->months]);
-	}
+    public function defaultQuery(): array
+    {
+        return array_filter(['currency' => $this->currency, 'months' => $this->months]);
+    }
 }

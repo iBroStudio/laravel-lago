@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Analytics;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -14,30 +13,27 @@ use Saloon\Http\Request;
  */
 class FindAllGrossRevenues extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return '/analytics/gross_revenue';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/analytics/gross_revenue";
-	}
+    /**
+     * @param  null|mixed  $currency  Currency of revenue analytics. Format must be ISO 4217.
+     * @param  null|string  $externalCustomerId  The customer external unique identifier (provided by your own application). Use it to filter revenue analytics at the customer level.
+     * @param  null|int  $months  Show data only for given number of months.
+     */
+    public function __construct(
+        protected mixed $currency = null,
+        protected ?string $externalCustomerId = null,
+        protected ?int $months = null,
+    ) {
+    }
 
-
-	/**
-	 * @param null|mixed $currency Currency of revenue analytics. Format must be ISO 4217.
-	 * @param null|string $externalCustomerId The customer external unique identifier (provided by your own application). Use it to filter revenue analytics at the customer level.
-	 * @param null|int $months Show data only for given number of months.
-	 */
-	public function __construct(
-		protected mixed $currency = null,
-		protected ?string $externalCustomerId = null,
-		protected ?int $months = null,
-	) {
-	}
-
-
-	public function defaultQuery(): array
-	{
-		return array_filter(['currency' => $this->currency, 'external_customer_id' => $this->externalCustomerId, 'months' => $this->months]);
-	}
+    public function defaultQuery(): array
+    {
+        return array_filter(['currency' => $this->currency, 'external_customer_id' => $this->externalCustomerId, 'months' => $this->months]);
+    }
 }

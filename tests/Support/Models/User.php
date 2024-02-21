@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use MichaelRubel\ValueObjects\Collection\Complex\Email;
 use MichaelRubel\ValueObjects\Collection\Complex\FullName;
-use MichaelRubel\ValueObjects\Collection\Complex\Name;
 
 class User extends Authenticatable implements CustomerObjectDataEloquentSource
 {
@@ -29,6 +28,7 @@ class User extends Authenticatable implements CustomerObjectDataEloquentSource
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
     public function getId(): string
     {
         return (string) $this->id;

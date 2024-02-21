@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Wallets;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -13,28 +12,25 @@ use Saloon\Http\Request;
  */
 class FindAllWallets extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return '/wallets';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/wallets";
-	}
+    /**
+     * @param  null|int  $page  Page number.
+     * @param  string  $externalCustomerId  The customer external unique identifier (provided by your own application).
+     */
+    public function __construct(
+        protected ?int $page,
+        protected string $externalCustomerId,
+    ) {
+    }
 
-
-	/**
-	 * @param null|int $page Page number.
-	 * @param string $externalCustomerId The customer external unique identifier (provided by your own application).
-	 */
-	public function __construct(
-		protected ?int $page = null,
-		protected string $externalCustomerId,
-	) {
-	}
-
-
-	public function defaultQuery(): array
-	{
-		return array_filter(['page' => $this->page, 'external_customer_id' => $this->externalCustomerId]);
-	}
+    public function defaultQuery(): array
+    {
+        return array_filter(['page' => $this->page, 'external_customer_id' => $this->externalCustomerId]);
+    }
 }

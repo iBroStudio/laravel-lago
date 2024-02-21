@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Coupons;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -13,20 +12,18 @@ use Saloon\Http\Request;
  */
 class FindCoupon extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/coupons/{$this->code}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/coupons/{$this->code}";
-	}
-
-
-	/**
-	 * @param string $code Unique code used to identify the coupon.
-	 */
-	public function __construct(
-		protected string $code,
-	) {
-	}
+    /**
+     * @param  string  $code  Unique code used to identify the coupon.
+     */
+    public function __construct(
+        protected string $code,
+    ) {
+    }
 }

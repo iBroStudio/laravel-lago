@@ -2,7 +2,6 @@
 
 namespace IBroStudio\Lago\Sdk\Requests\Customers;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -16,20 +15,18 @@ use Saloon\Http\Request;
  */
 class GetCustomerPortalUrl extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/customers/{$this->externalCustomerId}/portal_url";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/customers/{$this->externalCustomerId}/portal_url";
-	}
-
-
-	/**
-	 * @param string $externalCustomerId External ID of the existing customer
-	 */
-	public function __construct(
-		protected string $externalCustomerId,
-	) {
-	}
+    /**
+     * @param  string  $externalCustomerId  External ID of the existing customer
+     */
+    public function __construct(
+        protected string $externalCustomerId,
+    ) {
+    }
 }

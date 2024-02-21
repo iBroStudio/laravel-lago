@@ -16,11 +16,11 @@ return [
 
         'billing_configuration' => [
             'document_locale' => 'fr',
-            'invoice_grace_period' => 3
+            'invoice_grace_period' => 3,
         ],
 
         'currency' => \IBroStudio\Lago\Enums\Currencies::EUR,
 
-        'timezone' => \IBroStudio\Lago\Enums\Timezones::UTC
+        'timezone' => \IBroStudio\Lago\Enums\Timezones::UTC,
     ],
 ];

@@ -29,7 +29,9 @@ use Saloon\Http\Connector;
 class LagoSdk extends Connector
 {
     public function __construct(public readonly string $url,
-                                public readonly string $key) {}
+        public readonly string $key)
+    {
+    }
 
     protected function defaultAuth(): TokenAuthenticator
     {
@@ -37,103 +39,87 @@ class LagoSdk extends Connector
     }
 
     public function resolveBaseUrl(): string
-	{
-		return "{$this->url}/api/v1";
-	}
+    {
+        return "{$this->url}/api/v1";
+    }
 
+    public function addOns(): AddOns
+    {
+        return new AddOns($this);
+    }
 
-	public function addOns(): AddOns
-	{
-		return new AddOns($this);
-	}
+    public function analytics(): Analytics
+    {
+        return new Analytics($this);
+    }
 
+    public function billableMetrics(): BillableMetrics
+    {
+        return new BillableMetrics($this);
+    }
 
-	public function analytics(): Analytics
-	{
-		return new Analytics($this);
-	}
+    public function coupons(): Coupons
+    {
+        return new Coupons($this);
+    }
 
+    public function creditNotes(): CreditNotes
+    {
+        return new CreditNotes($this);
+    }
 
-	public function billableMetrics(): BillableMetrics
-	{
-		return new BillableMetrics($this);
-	}
+    public function customers(): Customers
+    {
+        return new Customers($this);
+    }
 
+    public function events(): Events
+    {
+        return new Events($this);
+    }
 
-	public function coupons(): Coupons
-	{
-		return new Coupons($this);
-	}
+    public function fees(): Fees
+    {
+        return new Fees($this);
+    }
 
+    public function invoices(): Invoices
+    {
+        return new Invoices($this);
+    }
 
-	public function creditNotes(): CreditNotes
-	{
-		return new CreditNotes($this);
-	}
+    public function organizations(): Organizations
+    {
+        return new Organizations($this);
+    }
 
+    public function plans(): Plans
+    {
+        return new Plans($this);
+    }
 
-	public function customers(): Customers
-	{
-		return new Customers($this);
-	}
+    public function subscriptions(): Subscriptions
+    {
+        return new Subscriptions($this);
+    }
 
+    public function taxes(): Taxes
+    {
+        return new Taxes($this);
+    }
 
-	public function events(): Events
-	{
-		return new Events($this);
-	}
+    public function wallets(): Wallets
+    {
+        return new Wallets($this);
+    }
 
+    public function webhookEndpoints(): WebhookEndpoints
+    {
+        return new WebhookEndpoints($this);
+    }
 
-	public function fees(): Fees
-	{
-		return new Fees($this);
-	}
-
-
-	public function invoices(): Invoices
-	{
-		return new Invoices($this);
-	}
-
-
-	public function organizations(): Organizations
-	{
-		return new Organizations($this);
-	}
-
-
-	public function plans(): Plans
-	{
-		return new Plans($this);
-	}
-
-
-	public function subscriptions(): Subscriptions
-	{
-		return new Subscriptions($this);
-	}
-
-
-	public function taxes(): Taxes
-	{
-		return new Taxes($this);
-	}
-
-
-	public function wallets(): Wallets
-	{
-		return new Wallets($this);
-	}
-
-
-	public function webhookEndpoints(): WebhookEndpoints
-	{
-		return new WebhookEndpoints($this);
-	}
-
-
-	public function webhooks(): Webhooks
-	{
-		return new Webhooks($this);
-	}
+    public function webhooks(): Webhooks
+    {
+        return new Webhooks($this);
+    }
 }
